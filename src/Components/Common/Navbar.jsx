@@ -21,15 +21,30 @@ export default function Navbar() {
       ? location.pathname === "/"
       : location.pathname.startsWith(path);
 
+  // scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // close menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // lock body scroll when menu open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,19 +52,17 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0A0A0A]/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 
+      bg-[#0A0A0A] lg:bg-transparent
+      ${scrolled ? "lg:bg-[#0A0A0A]/95 backdrop-blur-md shadow-lg" : ""}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
 
           {/* LOGO */}
-          <div className="relative w-[35%] sm:w-[15%] group overflow-hidden min-h-[56px]">
+          <div className="relative w-auto flex-shrink-0 group overflow-hidden min-h-[56px]">
 
-            {/* Image (hover) */}
+            {/* Hover LOGO */}
             <div
               className="absolute inset-0 flex items-center justify-center 
               w-0 opacity-0 
@@ -65,19 +78,19 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Default TEXT */}
+            {/* Default LOGO */}
             <div
-              className="flex item-center justify-center 
+              className="flex items-center justify-center 
               transition-all duration-500 ease-in-out 
               group-hover:-translate-x-full group-hover:opacity-0"
             >
-              <h1 className="text-white font-bold text-lg md:text-xl leading-none">
-                   <img
+              <Link to="/">
+                <img
                   src="/hoverLogo.png"
-                  alt="Hover "
-                  className="h-13 object-contain w-150"
+                  alt="Hover Logo"
+                  className="h-13 object-contain"
                 />
-              </h1>
+              </Link>
             </div>
           </div>
 
@@ -95,7 +108,6 @@ export default function Navbar() {
               >
                 {link.label}
 
-                {/* ACTIVE UNDERLINE */}
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-[#F46F25] transition-all duration-300 ${
                     isActive(link.path) ? "w-full" : "w-0"
@@ -134,7 +146,7 @@ export default function Navbar() {
         </div>
 
         {/* MOBILE MENU */}
-        {mobileMenuOpen ? (
+        {mobileMenuOpen && (
           <div className="lg:hidden mt-4 border-t border-white/10 pt-4 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -168,7 +180,7 @@ export default function Navbar() {
               </Link>
             </div>
           </div>
-        ) : null}
+        )}
       </div>
     </nav>
   );

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Target, Eye } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const cards = [
   {
@@ -15,14 +17,24 @@ const cards = [
 ];
 
 function MissionVision() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
   return (
     <section className="py-16 sm:py-24 bg-[#0D0D0D]">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {cards.map(({ icon: Icon, title, text }) => (
+          {cards.map(({ icon: Icon, title, text }, idx) => (
             <div
               key={title}
               className="p-8 sm:p-10 bg-[#111111] text-white rounded-2xl border border-white/10 hover:border-[#FF6B00]/50 transition-all duration-300 group"
+              data-aos="fade-up"
+              data-aos-delay={idx * 200}
             >
               {/* Icon */}
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF6B00]/10 flex items-center justify-center mb-6 group-hover:bg-[#FF6B00]/20 transition-colors duration-300">

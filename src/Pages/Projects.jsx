@@ -1,6 +1,10 @@
+import ProjectsSection from "../Components/ProjectPage/Project"
+
 const Projects = () => {
   return (
-    <div>Projects</div>
+    <div>
+      <ProjectsSection/>
+    </div>
   )
 }
 

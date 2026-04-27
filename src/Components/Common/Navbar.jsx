@@ -12,8 +12,8 @@ export default function Navbar() {
     { path: "/about", label: "About" },
     { path: "/services", label: "Services" },
     { path: "/courses", label: "Courses" },
-    { path: "/blog", label: "Blog" },
     { path: "/projects", label: "Projects" },
+    { path: "/blog", label: "Blog" },
   ];
 
   const isActive = (path) =>
@@ -28,13 +28,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (mobileMenuOpen) {
-      const timer = setTimeout(() => {
-        setMobileMenuOpen(false);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname, mobileMenuOpen]);
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,25 +47,39 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
 
           {/* LOGO */}
-          <Link to="/" className="flex items-center group">
-            <div className="relative w-14 h-14">
+          <div className="relative w-[35%] sm:w-[15%] group overflow-hidden min-h-[56px]">
 
-              {/* DEFAULT LOGO */}
-              <img
-                src="/logo.png"
-                alt="Logo"
-                className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-0"
-              />
-
-              {/* HOVER LOGO */}
-              <img
-                src="/hoverLogo.png"
-                alt="Hover Logo"
-                className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100"
-              />
-
+            {/* Image (hover) */}
+            <div
+              className="absolute inset-0 flex items-center justify-center 
+              w-0 opacity-0 
+              group-hover:w-full group-hover:opacity-100 
+              transition-all duration-500 ease-in-out z-10"
+            >
+              <Link to="/" className="flex items-center gap-2">
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  className="h-15 object-contain"
+                />
+              </Link>
             </div>
-          </Link>
+
+            {/* Default TEXT */}
+            <div
+              className="flex item-center justify-center 
+              transition-all duration-500 ease-in-out 
+              group-hover:-translate-x-full group-hover:opacity-0"
+            >
+              <h1 className="text-white font-bold text-lg md:text-xl leading-none">
+                   <img
+                  src="/hoverLogo.png"
+                  alt="Hover "
+                  className="h-13 object-contain w-150"
+                />
+              </h1>
+            </div>
+          </div>
 
           {/* DESKTOP LINKS */}
           <div className="hidden lg:flex items-center gap-8">
@@ -78,13 +87,20 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-semibold uppercase tracking-wide transition ${
+                className={`relative text-sm font-semibold uppercase tracking-wide transition ${
                   isActive(link.path)
                     ? "text-[#F46F25]"
                     : "text-white hover:text-[#F46F25]"
                 }`}
               >
                 {link.label}
+
+                {/* ACTIVE UNDERLINE */}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-[#F46F25] transition-all duration-300 ${
+                    isActive(link.path) ? "w-full" : "w-0"
+                  }`}
+                />
               </Link>
             ))}
           </div>
@@ -118,9 +134,8 @@ export default function Navbar() {
         </div>
 
         {/* MOBILE MENU */}
-        {mobileMenuOpen && (
+        {mobileMenuOpen ? (
           <div className="lg:hidden mt-4 border-t border-white/10 pt-4 space-y-2">
-
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -152,9 +167,8 @@ export default function Navbar() {
                 Contact Us
               </Link>
             </div>
-
           </div>
-        )}
+        ) : null}
       </div>
     </nav>
   );

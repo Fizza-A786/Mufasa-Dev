@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const stats = [
   { id: "about-students-count", target: 500, suffix: "+", label: "Students Trained", sub: "Empowered learners" },
@@ -10,6 +12,14 @@ const stats = [
 function Stats() {
   const [animated, setAnimated] = useState(false);
   const sectionRef = useRef(null);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,8 +56,8 @@ function Stats() {
     <section ref={sectionRef} className="py-16 sm:py-24 bg-[#111111]">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {stats.map(({ id, suffix, label, sub }) => (
-            <div key={id} className="text-center">
+          {stats.map(({ id, suffix, label, sub }, idx) => (
+            <div key={id} className="text-center" data-aos="fade-up" data-aos-delay={idx * 150}>
               {/* Number */}
               <div
                 className="text-4xl sm:text-6xl font-bold text-[#FF6B00] mb-2"

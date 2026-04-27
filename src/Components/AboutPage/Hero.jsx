@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // Pexels image – team of developers working together
 const heroImage = "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800";
 
 export function Hero() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
   return (
     <div className="bg-[#0D0D0D] pt-20 sm:pt-24">
 
       {/* Breadcrumb */}
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-4">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-4" data-aos="fade-down">
         <div className="flex items-center gap-2 text-sm text-[#999999]">
           <Link to="/" className="hover:text-[#FF6B00] transition-colors">Home</Link>
           <span>/</span>
@@ -23,7 +33,7 @@ export function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
             {/* Image */}
-            <div className="group relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden cursor-pointer order-2 lg:order-1">
+            <div className="group relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden cursor-pointer order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
               <img
                 src={heroImage}
                 alt="Mufasa Developers Team"
@@ -44,7 +54,7 @@ export function Hero() {
             </div>
 
             {/* Text */}
-            <div className="order-1 lg:order-2 flex flex-col gap-5">
+            <div className="order-1 lg:order-2 flex flex-col gap-5" data-aos="fade-left" data-aos-delay="400">
               <h2
                 className="text-4xl sm:text-5xl text-white xl:text-6xl font-bold uppercase leading-tight"
                 style={{ fontFamily: 'Barlow Condensed, sans-serif' }}

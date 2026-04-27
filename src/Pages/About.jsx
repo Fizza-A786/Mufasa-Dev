@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Stats from "../Components/AboutPage/Stats";
 import MissionVision from "../Components/AboutPage/MissionVision";

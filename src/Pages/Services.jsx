@@ -1,7 +1,10 @@
+import { ServicesGrid } from "../Components/ServicesPage/ServicesGrid"
 
 const Services = () => {
   return (
-    <div>Services</div>
+    <div>
+      <ServicesGrid/>
+    </div>
   )
 }
 

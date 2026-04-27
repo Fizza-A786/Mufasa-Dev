@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Check } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const whyImage = "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800";
 
@@ -23,13 +25,21 @@ const features = [
 ];
 
 function WhyChooseUs() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
   return (
     <section className="py-16 sm:py-24 bg-[#111111]">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left: Text */}
-          <div>
+          <div data-aos="fade-right">
             <h2
               className="text-4xl sm:text-5xl text-white  font-bold uppercase mb-8"
               style={{ fontFamily: "Barlow Condensed, sans-serif" }}
@@ -39,7 +49,7 @@ function WhyChooseUs() {
 
             <div className="flex flex-col gap-6">
               {features.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-4">
+                <div key={idx} className="flex items-start gap-4" data-aos="fade-up" data-aos-delay={idx * 150}>
                   <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center flex-shrink-0 mt-1">
                     <Check size={14} className="text-white" strokeWidth={3} />
                   </div>
@@ -60,7 +70,7 @@ function WhyChooseUs() {
           </div>
 
           {/* Right: Image */}
-          <div className="group relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden cursor-pointer">
+          <div className="group relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden cursor-pointer" data-aos="fade-left" data-aos-delay="600">
             <img
               src={whyImage}
               alt="Why Choose Mufasa"

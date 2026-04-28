@@ -26,15 +26,6 @@ export default function Hero() {
         {/* LEFT CONTENT */}
         <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
 
-          <div
-            data-aos="fade-down"
-            data-aos-delay="0"
-            className="hero-badge inline-block mt-6 px-5 py-2 bg-[#F46F25]/10 border border-[#F46F25]/30 rounded-full"
-          >
-            <span className="text-[#F46F25] text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold">
-              Welcome to Mufasa Developers
-            </span>
-          </div>
 
           <h1 className="hero-heading text-white font-bold leading-[1.1] mb-6 text-[clamp(30px,6vw,60px)] mt-8 md:mt-10">
             <span data-aos="fade-up" data-aos-delay="100" className="block mb-1">Build Skills.</span>

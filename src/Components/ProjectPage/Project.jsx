@@ -354,15 +354,8 @@ export default function ProjectsSection() {
       }}
     >
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-14">
-          <FadeIn>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#F46F25]/25 bg-[#F46F25]/8 mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F46F25] animate-pulse" />
-              <span className="text-[#F46F25] text-[10px] uppercase tracking-widest font-semibold">
-                Our Work
-              </span>
-            </div>
-          </FadeIn>
+        <div className="text-center mb-10 py-10">
+          
 
           <FadeIn delay={80}>
             <h2

@@ -129,7 +129,7 @@ export default function Navbar() {
             </a>
 
             <Link
-              to="/contact"
+              to="/contactus"
               className="px-5 py-2 bg-[#F46F25] text-white rounded-md text-sm font-semibold hover:bg-[#e05d1a] transition"
             >
               Contact Us
@@ -173,7 +173,7 @@ export default function Navbar() {
               </a>
 
               <Link
-                to="/contact"
+                to="/contactus"
                 className="text-center bg-[#F46F25] text-white py-2 rounded-md text-sm font-semibold"
               >
                 Contact Us

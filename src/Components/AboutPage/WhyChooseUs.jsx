@@ -1,47 +1,46 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Check } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const whyImage = "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800";
+const whyImage =
+  "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800";
 
 const features = [
   {
     title: "Practical & Industry-Focused Courses",
-    description: "Learn skills that are immediately applicable in the real world, designed by industry experts.",
+    description:
+      "Learn skills that are immediately applicable in the real world, designed by industry experts.",
   },
   {
     title: "Real World Projects",
-    description: "Build your portfolio with actual projects that showcase your abilities to potential clients.",
+    description:
+      "Build your portfolio with actual projects that showcase your abilities to potential clients.",
   },
   {
     title: "Freelancing Guidance",
-    description: "Get step-by-step training on how to find clients, price your services, and grow your freelance business.",
+    description:
+      "Get step-by-step training on how to find clients, price your services, and grow your freelance business.",
   },
   {
     title: "Dedicated Mentors & Support",
-    description: "Access personalized mentorship from experienced professionals throughout your learning journey.",
+    description:
+      "Access personalized mentorship from experienced professionals throughout your learning journey.",
   },
 ];
 
 function WhyChooseUs() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 100
-    });
-  }, []);
+  // ❗ IMPORTANT: DO NOT initialize AOS here if already in App.jsx
 
   return (
-    <section className="py-16 sm:py-24 bg-[#111111]">
+    <section className="py-16 sm:py-24 bg-[#111111] overflow-x-hidden">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-          {/* Left: Text */}
+          {/* LEFT TEXT */}
           <div data-aos="fade-right">
             <h2
-              className="text-4xl sm:text-5xl text-white  font-bold uppercase mb-8"
+              className="text-4xl sm:text-5xl text-white font-bold uppercase mb-8"
               style={{ fontFamily: "Barlow Condensed, sans-serif" }}
             >
               WHY CHOOSE <span className="text-[#FF6B00]">MUFASA?</span>
@@ -49,10 +48,16 @@ function WhyChooseUs() {
 
             <div className="flex flex-col gap-6">
               {features.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-4" data-aos="fade-up" data-aos-delay={idx * 150}>
+                <div
+                  key={idx}
+                  className="flex items-start gap-4"
+                  data-aos="fade-up"
+                  data-aos-delay={Math.min(idx * 100, 300)}
+                >
                   <div className="w-6 h-6 rounded-full bg-[#FF6B00] flex items-center justify-center flex-shrink-0 mt-1">
                     <Check size={14} className="text-white" strokeWidth={3} />
                   </div>
+
                   <div>
                     <h4
                       className="text-lg sm:text-xl text-white font-bold mb-1"
@@ -69,19 +74,24 @@ function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Right: Image */}
-          <div className="group relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden cursor-pointer" data-aos="fade-left" data-aos-delay="600">
+          {/* RIGHT IMAGE */}
+          <div
+            className="group relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden cursor-pointer"
+            data-aos="fade-left"
+            data-aos-delay="300"
+          >
             <img
               src={whyImage}
               alt="Why Choose Mufasa"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
-            {/* Dark overlay */}
+
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-50" />
-            {/* Orange tint on hover */}
+
             <div className="absolute inset-0 bg-[#FF6B00]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            {/* Corner brackets */}
+
             <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[#FF6B00] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
             <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[#FF6B00] opacity-0 group-hover:opacity-100 transition-all duration-500" />
           </div>
 

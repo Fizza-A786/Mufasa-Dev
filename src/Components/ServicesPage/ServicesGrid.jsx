@@ -210,18 +210,6 @@ export function ServicesGrid() {
         className="min-h-screen pt-24 pb-20"
         style={{ background: "#0A0A0A", fontFamily: "'DM Sans', sans-serif" }}
       >
-        {/* Breadcrumb */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-          <div className="flex items-center gap-2 text-xs text-[#555] tracking-widest uppercase">
-            <Link to="/" className="hover:text-[#FF6B00] transition-colors duration-200">
-              Home
-            </Link>
-            <span className="text-[#333]">/</span>
-            <span className="text-white">Services</span>
-          </div>
-        </div>
-
-        {/* Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
           <div ref={labelRef} className="inline-flex items-center gap-3 mb-5">
             <span className="w-8 h-px bg-[#FF6B00]" />

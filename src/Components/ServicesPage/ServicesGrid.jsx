@@ -63,56 +63,65 @@ export function ServicesGrid() {
     const ctx = gsap.context(() => {
 
       // --- Label line animation
-      gsap.from(labelRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: labelRef.current,
-          start: "top 85%",
-        },
-      });
+      if (labelRef.current) {
+        gsap.from(labelRef.current, {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: "top 85%",
+          },
+        });
+      }
 
       // --- Heading split animation (word by word)
-      gsap.from(headingRef.current, {
-        opacity: 0,
-        y: 60,
-        skewY: 4,
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-        },
-      });
+      if (headingRef.current) {
+        gsap.from(headingRef.current, {
+          opacity: 0,
+          y: 60,
+          skewY: 4,
+          duration: 1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+          },
+        });
+      }
 
       // --- Subtext
-      gsap.from(subRef.current, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: subRef.current,
-          start: "top 88%",
-        },
-      });
+      if (subRef.current) {
+        gsap.from(subRef.current, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: subRef.current,
+            start: "top 88%",
+          },
+        });
+      }
 
       // --- Cards staggered entrance
-      gsap.from(cardRefs.current, {
-        opacity: 0,
-        y: 60,
-        scale: 0.95,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: cardRefs.current[0],
-          start: "top 85%",
-        },
-      });
+      const validCards = cardRefs.current.filter(el => el !== null);
+      if (validCards.length > 0) {
+        gsap.from(validCards, {
+          opacity: 0,
+          y: 60,
+          scale: 0.95,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: validCards[0],
+            start: "top 85%",
+          },
+        });
+      }
 
       // --- Divider lines animate width on scroll
       dividerRefs.current.forEach((el) => {
@@ -135,6 +144,8 @@ export function ServicesGrid() {
 
   // Card hover: lift + glow
   const handleMouseEnter = (e) => {
+    if (!e.currentTarget) return;
+    
     gsap.to(e.currentTarget, {
       y: -10,
       scale: 1.02,
@@ -142,28 +153,40 @@ export function ServicesGrid() {
       duration: 0.4,
       ease: "power2.out",
     });
+    
     // Animate icon box
     const iconBox = e.currentTarget.querySelector(".icon-box");
-    gsap.to(iconBox, {
-      backgroundColor: "#FF6B00",
-      rotate: -6,
-      scale: 1.12,
-      duration: 0.35,
-      ease: "back.out(1.4)",
-    });
+    if (iconBox) {
+      gsap.to(iconBox, {
+        backgroundColor: "#FF6B00",
+        rotate: -6,
+        scale: 1.12,
+        duration: 0.35,
+        ease: "back.out(1.4)",
+      });
+    }
+    
     const icon = e.currentTarget.querySelector(".service-icon");
-    gsap.to(icon, { color: "#ffffff", duration: 0.25 });
+    if (icon) {
+      gsap.to(icon, { color: "#ffffff", duration: 0.25 });
+    }
 
     // Animate divider
     const divider = e.currentTarget.querySelector(".card-divider");
-    gsap.to(divider, { width: 56, duration: 0.3, ease: "power2.out" });
+    if (divider) {
+      gsap.to(divider, { width: 56, duration: 0.3, ease: "power2.out" });
+    }
 
     // Arrow nudge
     const arrow = e.currentTarget.querySelector(".learn-arrow");
-    gsap.to(arrow, { x: 5, duration: 0.3, ease: "power2.out" });
+    if (arrow) {
+      gsap.to(arrow, { x: 5, duration: 0.3, ease: "power2.out" });
+    }
   };
 
   const handleMouseLeave = (e) => {
+    if (!e.currentTarget) return;
+    
     gsap.to(e.currentTarget, {
       y: 0,
       scale: 1,
@@ -171,22 +194,32 @@ export function ServicesGrid() {
       duration: 0.5,
       ease: "power3.out",
     });
+    
     const iconBox = e.currentTarget.querySelector(".icon-box");
-    gsap.to(iconBox, {
-      backgroundColor: "transparent",
-      rotate: 0,
-      scale: 1,
-      duration: 0.4,
-      ease: "power2.out",
-    });
+    if (iconBox) {
+      gsap.to(iconBox, {
+        backgroundColor: "transparent",
+        rotate: 0,
+        scale: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+    
     const icon = e.currentTarget.querySelector(".service-icon");
-    gsap.to(icon, { color: "#FF6B00", duration: 0.25 });
+    if (icon) {
+      gsap.to(icon, { color: "#FF6B00", duration: 0.25 });
+    }
 
     const divider = e.currentTarget.querySelector(".card-divider");
-    gsap.to(divider, { width: 32, duration: 0.3, ease: "power2.out" });
+    if (divider) {
+      gsap.to(divider, { width: 32, duration: 0.3, ease: "power2.out" });
+    }
 
     const arrow = e.currentTarget.querySelector(".learn-arrow");
-    gsap.to(arrow, { x: 0, duration: 0.3, ease: "power2.out" });
+    if (arrow) {
+      gsap.to(arrow, { x: 0, duration: 0.3, ease: "power2.out" });
+    }
   };
 
   return (

@@ -56,7 +56,7 @@ export default function Navbar() {
       bg-[#0A0A0A] lg:bg-transparent
       ${scrolled ? "lg:bg-[#0A0A0A]/95 backdrop-blur-md shadow-lg" : ""}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11 py-4">
         <div className="flex items-center justify-between">
 
           {/* LOGO */}
@@ -120,7 +120,7 @@ export default function Navbar() {
           {/* DESKTOP BUTTONS */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://www.upwork.com"
+              href="https://www.upwork.com/freelancers/~0187b7cb16b8a2b93f"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2 border border-[#F46F25] text-[#F46F25] rounded-md text-sm font-semibold hover:bg-[#F46F25]/10 transition"
@@ -164,7 +164,7 @@ export default function Navbar() {
 
             <div className="pt-4 flex flex-col gap-3">
               <a
-                href="https://www.upwork.com"
+                href="https://www.upwork.com/freelancers/~0187b7cb16b8a2b93f"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-center border border-[#F46F25] text-[#F46F25] py-2 rounded-md text-sm font-semibold"

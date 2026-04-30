@@ -2,8 +2,8 @@ import { Code, Users, Briefcase, TrendingUp } from "lucide-react";
 
 export function Features() {
   return (
-    <section className="py-12 bg-[#111111] border-y border-white/10">
-      <div className="max-w-[1280px] mx-auto px-6">
+    <section className="py-12 sm:py-16  border-y border-white/10">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex items-center gap-4 p-6 border-r border-white/10">
             <Code className="text-[#F46F25]" size={32} />

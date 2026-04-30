@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { Eye } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 import charity from "../../assets/charity.jpeg";
 import carrent from "../../assets/carrent.jpg";
@@ -12,41 +14,80 @@ const projects = [
 ];
 
 export function ProjectsPreview() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".projects-heading", {
+        y: 30,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+      });
+
+      gsap.from(".project-tile", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.18,
+        duration: 0.9,
+        ease: "power3.out",
+      });
+
+      gsap.from(".projects-btn", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.4,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="flex flex-col items-center text-center px-4 sm:px-6 lg:px-0">
-      
+    <section
+      ref={sectionRef}
+      className="w-full px-3 sm:px-2 lg:px-8 py-10 flex flex-col items-center"
+    >
       <h2
-        className="text-3xl sm:text-4xl font-bold uppercase mb-8"
+        className="projects-heading text-3xl sm:text-4xl md:text-5xl font-semibold tracking-wide mb-4 text-center"
         style={{ fontFamily: "Barlow Condensed, sans-serif" }}
       >
-        Our <span className="text-[#F46F25]">Project</span>
+        Selected <span className="text-[#F46F25]">Work</span>
       </h2>
 
-      {/* RESPONSIVE GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 w-full max-w-6xl">
-        
+      <p className="text-center text-white/60 text-sm sm:text-base max-w-xl mb-10 leading-relaxed">
+        A curated collection of our most impactful digital projects.
+        Designed with precision, built for performance and experience.
+      </p>
+      <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
           <a
             key={project.id}
             href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="reveal relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+            className="project-tile group relative overflow-hidden rounded-2xl"
           >
-            
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-[300px] object-cover transition-transform duration-700 group-hover:scale-110"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F46F25]/80 to-transparent opacity-0 group-hover:opacity-100 transition-all flex items-end p-4">
-              <span
-                className="text-white font-bold text-lg"
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-500" />
+
+            <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+
+              <h3
+                className="text-white text-lg font-semibold tracking-wide"
                 style={{ fontFamily: "Barlow Condensed, sans-serif" }}
               >
                 {project.title}
-              </span>
+              </h3>
+
+              <div className="opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <Eye className="text-white" size={20} />
+              </div>
+
             </div>
 
           </a>
@@ -55,11 +96,13 @@ export function ProjectsPreview() {
 
       <Link
         to="/projects"
-        className="inline-flex items-center gap-2 text-[#F46F25] font-bold hover:gap-3 transition-all"
+        className="projects-btn mt-10 inline-flex items-center gap-2 text-sm font-medium tracking-wider text-white/80 hover:text-white transition-all"
       >
-        View All Projects <ArrowRight size={20} />
+        View Full Portfolio
+        <span className="w-6 h-[1px] bg-[#F46F25]"></span>
       </Link>
-    </div>
+
+    </section>
   );
 }
 

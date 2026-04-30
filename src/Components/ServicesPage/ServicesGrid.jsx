@@ -1,226 +1,73 @@
-import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { Code, Palette, Briefcase, Users, TrendingUp, Package } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect } from "react";
+import {
+  Code,
+  Palette,
+  Briefcase,
+  Users,
+  TrendingUp,
+  Package,
+} from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+/* ================= DATA ================= */
 
 const services = [
   {
     icon: Code,
     title: "Web Development",
     description:
-      "Master modern web technologies including React, Node.js, and full-stack development. Build responsive, scalable applications from scratch.",
+      "Master modern web technologies including React, Node.js, and full-stack development.",
     tag: "Development",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
     description:
-      "Learn design principles, user research, wireframing, prototyping with Figma, and create stunning user interfaces that convert.",
+      "Learn design principles, wireframing, prototyping with Figma, and create stunning UI.",
     tag: "Design",
   },
   {
     icon: Briefcase,
     title: "Freelancing Training",
     description:
-      "Complete guide to launching your freelance career: finding clients, pricing, contracts, communication, and building long-term success.",
+      "Complete guide to launching your freelance career and finding clients.",
     tag: "Career",
   },
   {
     icon: Users,
     title: "Internship Program",
     description:
-      "Gain hands-on experience working on real client projects under expert supervision. Build your portfolio while learning industry best practices.",
+      "Gain real-world experience working on live projects with expert guidance.",
     tag: "Experience",
   },
   {
     icon: TrendingUp,
     title: "SEO & Marketing",
     description:
-      "Learn search engine optimization, digital marketing strategies, content marketing, and analytics to grow online businesses.",
+      "Learn SEO, digital marketing, and strategies to grow online businesses.",
     tag: "Growth",
   },
   {
     icon: Package,
     title: "Branding & Design",
     description:
-      "Master brand identity creation, logo design, visual systems, and creating cohesive brand experiences across all touchpoints.",
+      "Create brand identity, logos, and strong visual systems.",
     tag: "Branding",
   },
 ];
 
+/* ================= COMPONENT ================= */
+
 export function ServicesGrid() {
-  const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const labelRef = useRef(null);
-  const subRef = useRef(null);
-  const cardRefs = useRef([]);
-  const dividerRefs = useRef([]);
-
   useEffect(() => {
-    const ctx = gsap.context(() => {
-
-      // --- Label line animation
-      if (labelRef.current) {
-        gsap.from(labelRef.current, {
-          opacity: 0,
-          y: 20,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: labelRef.current,
-            start: "top 85%",
-          },
-        });
-      }
-
-      // --- Heading split animation (word by word)
-      if (headingRef.current) {
-        gsap.from(headingRef.current, {
-          opacity: 0,
-          y: 60,
-          skewY: 4,
-          duration: 1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 85%",
-          },
-        });
-      }
-
-      // --- Subtext
-      if (subRef.current) {
-        gsap.from(subRef.current, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          delay: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: subRef.current,
-            start: "top 88%",
-          },
-        });
-      }
-
-      // --- Cards staggered entrance
-      const validCards = cardRefs.current.filter(el => el !== null);
-      if (validCards.length > 0) {
-        gsap.from(validCards, {
-          opacity: 0,
-          y: 60,
-          scale: 0.95,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: validCards[0],
-            start: "top 85%",
-          },
-        });
-      }
-
-      // --- Divider lines animate width on scroll
-      dividerRefs.current.forEach((el) => {
-        if (!el) return;
-        gsap.from(el, {
-          width: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 90%",
-          },
-        });
-      });
-
-    }, sectionRef);
-
-    return () => ctx.revert();
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out-cubic",
+    });
   }, []);
-
-  // Card hover: lift + glow
-  const handleMouseEnter = (e) => {
-    if (!e.currentTarget) return;
-    
-    gsap.to(e.currentTarget, {
-      y: -10,
-      scale: 1.02,
-      boxShadow: "0 24px 60px rgba(255,107,0,0.18)",
-      duration: 0.4,
-      ease: "power2.out",
-    });
-    
-    // Animate icon box
-    const iconBox = e.currentTarget.querySelector(".icon-box");
-    if (iconBox) {
-      gsap.to(iconBox, {
-        backgroundColor: "#FF6B00",
-        rotate: -6,
-        scale: 1.12,
-        duration: 0.35,
-        ease: "back.out(1.4)",
-      });
-    }
-    
-    const icon = e.currentTarget.querySelector(".service-icon");
-    if (icon) {
-      gsap.to(icon, { color: "#ffffff", duration: 0.25 });
-    }
-
-    // Animate divider
-    const divider = e.currentTarget.querySelector(".card-divider");
-    if (divider) {
-      gsap.to(divider, { width: 56, duration: 0.3, ease: "power2.out" });
-    }
-
-    // Arrow nudge
-    const arrow = e.currentTarget.querySelector(".learn-arrow");
-    if (arrow) {
-      gsap.to(arrow, { x: 5, duration: 0.3, ease: "power2.out" });
-    }
-  };
-
-  const handleMouseLeave = (e) => {
-    if (!e.currentTarget) return;
-    
-    gsap.to(e.currentTarget, {
-      y: 0,
-      scale: 1,
-      boxShadow: "0 0px 0px rgba(255,107,0,0)",
-      duration: 0.5,
-      ease: "power3.out",
-    });
-    
-    const iconBox = e.currentTarget.querySelector(".icon-box");
-    if (iconBox) {
-      gsap.to(iconBox, {
-        backgroundColor: "transparent",
-        rotate: 0,
-        scale: 1,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    }
-    
-    const icon = e.currentTarget.querySelector(".service-icon");
-    if (icon) {
-      gsap.to(icon, { color: "#FF6B00", duration: 0.25 });
-    }
-
-    const divider = e.currentTarget.querySelector(".card-divider");
-    if (divider) {
-      gsap.to(divider, { width: 32, duration: 0.3, ease: "power2.out" });
-    }
-
-    const arrow = e.currentTarget.querySelector(".learn-arrow");
-    if (arrow) {
-      gsap.to(arrow, { x: 0, duration: 0.3, ease: "power2.out" });
-    }
-  };
 
   return (
     <>
@@ -229,129 +76,90 @@ export function ServicesGrid() {
 
         .icon-box {
           border: 2px solid rgba(255,107,0,0.5);
-          background: transparent;
+          transition: all 0.3s ease;
         }
-        .learn-arrow {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
+
+        .card:hover {
+          transform: translateY(-10px) scale(1.02);
+          box-shadow: 0 24px 60px rgba(255,107,0,0.18);
+        }
+
+        .card:hover .icon-box {
+          background-color: #FF6B00;
+          color:white;
+          transform: rotate(-6deg) scale(1.1);
+        }
+
+        .card:hover .service-icon {
+          color: #fff;
         }
       `}</style>
 
-      <div
-        ref={sectionRef}
-        className="min-h-screen pt-24 pb-20"
-        style={{ background: "#0A0A0A", fontFamily: "'DM Sans', sans-serif" }}
+      <section
+        className="min-h-screen pt-24 pb-20 text-white"
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-          <div ref={labelRef} className="inline-flex items-center gap-3 mb-5">
-            <span className="w-8 h-px bg-[#FF6B00]" />
-            <span className="text-[#FF6B00] text-xs font-semibold uppercase tracking-[0.22em]">
-              What We Offer
-            </span>
-            <span className="w-8 h-px bg-[#FF6B00]" />
-          </div>
+        {/* HEADING */}
+        <div className="text-center mb-16">
+          <p
+            data-aos="fade-up"
+            className="text-[#FF6B00] text-xs uppercase tracking-widest mb-4"
+          >
+            What We Offer
+          </p>
 
-          <div className="overflow-hidden">
-            <h1
-              ref={headingRef}
-              className="text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase leading-none mb-6 text-white"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-            >
-              Our{" "}
-              <span className="text-[#FF6B00]">Services</span>
-            </h1>
-          </div>
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-5xl md:text-7xl font-bold"
+            style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
+          >
+            Our <span className="text-[#FF6B00]">Services</span>
+          </h1>
 
           <p
-            ref={subRef}
-            className="text-[#777] text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="text-[#777] mt-4 max-w-xl mx-auto"
           >
-            A wide range of services designed to help you build skills, launch
-            your career, and succeed in the digital world.
+            A wide range of services to help you grow in the digital world.
           </p>
         </div>
+        <div className="max-w-[1220px] mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, i) => (
+            <div
+              key={i}
+              data-aos="fade-up"
+              data-aos-delay={i * 100}
+              className="card p-7 rounded-2xl border border-white/10 bg-[#111] cursor-pointer transition-all duration-300"
+            >
+              <span className="text-xs text-[#FF6B00]">
+                {service.tag}
+              </span>
 
-        {/* Cards Grid */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
-            {services.map((service, idx) => (
-              <div
-                key={idx}
-                ref={(el) => (cardRefs.current[idx] = el)}
-                className="relative p-7 sm:p-8 rounded-2xl border border-white/8 cursor-pointer"
-                style={{
-                  background: "#111111",
-                  borderColor: "rgba(255,255,255,0.07)",
-                  willChange: "transform",
-                }}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                {/* Tag badge */}
-                <span
-                  className="absolute top-5 right-5 text-[10px] font-semibold uppercase tracking-widest px-2.5 py-0.5 rounded-full"
-                  style={{
-                    color: "rgba(255,107,0,0.65)",
-                    border: "1px solid rgba(255,107,0,0.2)",
-                  }}
-                >
-                  {service.tag}
-                </span>
-
-                {/* Icon */}
-                <div className="icon-box w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                  <service.icon
-                    className="service-icon"
-                    size={26}
-                    style={{ color: "#FF6B00" }}
-                  />
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="text-xl sm:text-2xl font-bold uppercase mb-3 text-white"
-                  style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {service.title}
-                </h3>
-
-                {/* Animated divider */}
-                <div
-                  className="card-divider h-0.5 mb-4"
-                  ref={(el) => (dividerRefs.current[idx] = el)}
-                  style={{ width: 32, background: "rgba(255,107,0,0.4)" }}
+              <div className="icon-box w-14 h-14 flex items-center justify-center rounded-xl my-5">
+                <service.icon
+                  className="service-icon"
+                  size={26}
+                  style={{ color: "#FF6B00" }}
                 />
-
-                {/* Description */}
-                <p className="text-[#777] text-sm leading-relaxed mb-6">
-                  {service.description}
-                </p>
-
-                {/* CTA */}
-                <a
-                  href="#"
-                  className="learn-arrow text-[#FF6B00] text-xs font-bold uppercase tracking-widest"
-                >
-                  Learn More
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path
-                      d="M2 7h10M8 3l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
               </div>
-            ))}
-          </div>
+
+              <h3 className="text-xl font-bold mb-2">
+                {service.title}
+              </h3>
+
+              <p className="text-[#777] text-sm mb-4">
+                {service.description}
+              </p>
+
+              <span className="text-[#FF6B00] text-xs font-bold">
+                Learn More →
+              </span>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
     </>
   );
 }

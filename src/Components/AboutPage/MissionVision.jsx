@@ -21,14 +21,18 @@ function MissionVision() {
     AOS.init({
       duration: 1000,
       once: true,
-      offset: 100
+      offset: 100,
     });
   }, []);
 
   return (
-    <section className="py-16 sm:py-24 bg-[#0D0D0D]">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+    <section className="py-16 sm:py-24 ">
+
+      {/* WIDTH FIXED (matches Navbar + Hero) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
           {cards.map(({ icon: Icon, title, text }, idx) => (
             <div
               key={title}
@@ -43,7 +47,7 @@ function MissionVision() {
 
               {/* Title */}
               <h3
-                className="text-2xl sm:text-3xl text-white  font-bold uppercase mb-3"
+                className="text-2xl sm:text-3xl text-white font-bold uppercase mb-3"
                 style={{ fontFamily: "Barlow Condensed, sans-serif" }}
               >
                 {title}
@@ -58,7 +62,9 @@ function MissionVision() {
               </p>
             </div>
           ))}
+
         </div>
+
       </div>
     </section>
   );

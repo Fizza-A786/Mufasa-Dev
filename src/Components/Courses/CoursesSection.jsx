@@ -1,174 +1,83 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const courses = [
   "React & Next.js",
   "Figma Mastery",
-  "Full Stack Dev",
+  "Full Stack Development",
   "SEO & Growth",
   "Brand Identity",
 ];
 
 const CoursesSection = () => {
-  const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const tagRefs = useRef([]);
-  const badgeRef = useRef(null);
-
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headingRef.current, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-        },
-      });
-
-      gsap.from(badgeRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: badgeRef.current,
-          start: "top 90%",
-        },
-      });
-
-      gsap.from(tagRefs.current, {
-        opacity: 0,
-        scale: 0.9,
-        stagger: 0.1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: tagRefs.current[0],
-          start: "top 90%",
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out-cubic",
+    });
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        background: "#0A0A0A",
-        padding: "90px 20px",
-        fontFamily: "'DM Sans', sans-serif",
+    <section className="bg-[#0A0A0A] text-white py-24 px-6">
+      <div className="max-w-6xl mx-auto text-center mb-16">
 
-        // 🔥 CENTERING FIX
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-      }}
-    >
-      {/* Content Wrapper */}
-      <div
-        style={{
-          textAlign: "center",
-          maxWidth: "800px",
-          width: "100%",
-        }}
-      >
         {/* Heading */}
         <h2
-          ref={headingRef}
-          style={{
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontSize: "clamp(32px, 6vw, 64px)",
-            fontWeight: 800,
-            color: "#fff",
-            marginBottom: 16,
-          }}
+          data-aos="fade-up"
+          className="text-4xl md:text-6xl font-bold"
+          style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
-          Our <span style={{ color: "#FF6B00" }}>Courses</span>
+          Our <span className="text-[#FF6B00]">Courses</span>
         </h2>
 
         {/* Description */}
         <p
-          style={{
-            color: "#888",
-            maxWidth: 520,
-            margin: "0 auto 40px",
-            fontSize: 15,
-            lineHeight: 1.6,
-          }}
+          data-aos="fade-up"
+          data-aos-delay="100"
+          className="text-[#888] max-w-xl mx-auto mt-4 text-sm md:text-base leading-relaxed"
         >
-          We're crafting high-quality courses in development, design, and digital growth.
-          Stay tuned — something powerful is on the way.
+          We're building powerful courses in development, design, and digital growth.
+          Stay tuned for something amazing.
         </p>
+      </div>
 
-        {/* Tags */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: 10,
-            marginBottom: 40,
-          }}
-        >
-          {courses.map((c, i) => (
-            <span
-              key={i}
-              ref={(el) => (tagRefs.current[i] = el)}
-              style={{
-                background: "#111",
-                border: "1px solid rgba(255,107,0,0.15)",
-                color: "#aaa",
-                fontSize: 11,
-                padding: "6px 14px",
-                borderRadius: 20,
-                transition: "0.2s",
-              }}
-              onMouseOver={(e) => {
-                e.target.style.color = "#fff";
-                e.target.style.border = "1px solid #FF6B00";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.color = "#aaa";
-                e.target.style.border = "1px solid rgba(255,107,0,0.15)";
-              }}
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+      {/* ================= TAGS ================= */}
+      <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-3 mb-14">
 
-        {/* CTA */}
+        {courses.map((course, i) => (
+          <span
+            key={i}
+            data-aos="fade-up"
+            data-aos-delay={i * 100}
+            className="px-4 py-2 text-sm rounded-full border border-white/10 bg-[#111] text-[#ccc]
+            cursor-default transition-all duration-500 
+            hover:border-[#FF6B00] hover:text-white hover:shadow-md hover:shadow-[#FF6B00]/10"
+          >
+            {course}
+          </span>
+        ))}
+
+      </div>
+
+      {/* ================= CTA ================= */}
+      <div className="text-center" data-aos="fade-up">
+
         <button
-          style={{
-            background: "#FF6B00",
-            color: "#fff",
-            border: "none",
-            padding: "12px 28px",
-            fontSize: 13,
-            letterSpacing: "0.1em",
-            cursor: "pointer",
-            borderRadius: 6,
-            transition: "0.2s",
-          }}
-          onMouseOver={(e) => {
-            e.target.style.transform = "translateY(-2px)";
-            e.target.style.boxShadow = "0 10px 25px rgba(255,107,0,0.3)";
-          }}
-          onMouseOut={(e) => {
-            e.target.style.transform = "translateY(0px)";
-            e.target.style.boxShadow = "none";
-          }}
+          className="bg-[#FF6B00] hover:bg-[#ff8c33] text-white px-8 py-3 rounded-lg
+          text-sm font-semibold tracking-widest transition-all duration-500 ease-out
+          shadow-lg shadow-[#FF6B00]/20 hover:shadow-[#FF6B00]/40 hover:-translate-y-1"
         >
           Notify Me on Launch
         </button>
+
+        <p className="text-[#666] text-xs mt-4">
+          Get early access when courses are released
+        </p>
+
       </div>
+
     </section>
   );
 };

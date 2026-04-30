@@ -24,11 +24,13 @@ export function Hero() {
   }, []);
 
   return (
-    <div className="bg-[#0D0D0D] pt-20 sm:pt-24 overflow-x-hidden">
+    <div className=" pt-20 sm:pt-24 overflow-x-hidden">
 
       {/* Hero Section */}
       <section className="py-10 sm:py-16">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+
+        {/* WIDTH FIXED HERE (matches Navbar max-w-7xl px-11) */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-13">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 

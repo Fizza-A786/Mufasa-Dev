@@ -30,15 +30,17 @@ const features = [
 ];
 
 function WhyChooseUs() {
-  // ❗ IMPORTANT: DO NOT initialize AOS here if already in App.jsx
-
   return (
-    <section className="py-16 sm:py-24 bg-[#111111] overflow-x-hidden">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+    <section className="py-16 sm:py-24  overflow-x-hidden">
+
+      {/* WIDTH FIXED (matches Navbar system) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* LEFT TEXT */}
           <div data-aos="fade-right">
+
             <h2
               className="text-4xl sm:text-5xl text-white font-bold uppercase mb-8"
               style={{ fontFamily: "Barlow Condensed, sans-serif" }}

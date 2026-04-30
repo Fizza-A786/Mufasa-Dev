@@ -1,1 +1,89 @@
 @import "tailwindcss";
+/* 🔥 FLOATING BLOBS */
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #F46F25;
+  filter: blur(140px);
+  opacity: 0.25;
+  border-radius: 50%;
+  animation: float 12s ease-in-out infinite;
+}
+
+.blob1 {
+  top: -80px;
+  left: -80px;
+}
+
+.blob2 {
+  bottom: -80px;
+  right: -80px;
+  animation-delay: 4s;
+}
+
+/* ✨ FLOAT ANIMATION */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(40px, 40px);
+  }
+}
+
+/* 🔥 FADE UP TEXT */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* 🎯 BUTTONS */
+.btn-primary {
+  padding: 12px 26px;
+  background: #F46F25;
+  color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 30px rgba(244,111,37,0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: #e55d1a;
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  padding: 12px 26px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+}

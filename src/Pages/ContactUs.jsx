@@ -13,8 +13,8 @@ function ContactUs() {
   }, []);
 
   return (
-    <section className="bg-[#0D0D0D] text-white py-20 sm:py-28 overflow-x-hidden">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+    <section className="text-white py-20 sm:py-28 overflow-x-hidden">
+      <div className="max-w-[1280px] mx-auto px-10 sm:px-10">
 
         {/* Heading */}
         <div className="text-center mb-14" data-aos="fade-up">
@@ -61,7 +61,7 @@ function ContactUs() {
                 <MapPin className="text-[#FF6B00]" />
                 <div>
                   <h4 className="text-lg font-bold">Location</h4>
-                  <p className="text-[#999] text-sm">Sindh, Pakistan</p>
+                  <p className="text-[#999] text-sm">Bahawalpur, Pakistan</p>
                 </div>
               </div>
             </div>

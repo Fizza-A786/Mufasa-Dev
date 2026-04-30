@@ -105,7 +105,7 @@ export default function Hero() {
           <div className="relative w-[450px] h-[450px]">
 
             <img
-              src="../../public/hero.png"
+              src="./hero.png"
               alt="tech visual"
               className="w-full h-full object-contain opacity-90"
               style={{

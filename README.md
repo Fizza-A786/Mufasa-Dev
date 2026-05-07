@@ -1,16 +1,49 @@
-# React + Vite
+# 🚀 Mufasa Dev — Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive developer portfolio website built to showcase projects, skills, services, and contact information with smooth UI/UX and clean animations.
 
-Currently, two official plugins are available:
+🌐 Live Demo: [Mufasa Dev Portfolio](https://mufasa-dev-ebon.vercel.app/?utm_source=chatgpt.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🎨 Modern & Responsive UI
+- ⚡ Fast Performance
+- 🌙 Smooth Animations
+- 📱 Mobile Friendly Design
+- 🧩 Reusable Components
+- 📂 Projects Showcase
+- 👨‍💻 Developer Portfolio Layout
+- 📞 Contact Section
+- 🚀 Deployed on Vercel
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- React.js
+- Tailwind CSS
+- JavaScript
+- Vite
+- Framer Motion
+- Vercel
+
+---
+
+## 📸 Preview
+
+![Portfolio Preview](https://via.placeholder.com/1200x600.png?text=Mufasa+Dev+Portfolio)
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+│
+├── components/
+├── assets/
+├── pages/
+├── App.jsx
+└── main.jsx

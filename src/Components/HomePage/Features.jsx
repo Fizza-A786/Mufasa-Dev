@@ -4,33 +4,33 @@ export function Features() {
   return (
     <section className="py-12 sm:py-16  border-y border-white/10">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="flex items-center gap-4 p-6 border-r border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0">
+          <div className="flex items-center gap-4 p-6 border-b md:border-b-0 md:border-r border-white/10">
             <Code className="text-[#F46F25]" size={32} />
             <div>
-              <h3 className="font-bold text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>PRACTICAL LEARNING</h3>
-              <p className="text-[#999999] text-xs">Hands-on projects</p>
+              <h3 className="font-bold text-base md:text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>PRACTICAL LEARNING</h3>
+              <p className="text-[#999999] text-sm md:text-xs">Hands-on projects</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-6 border-r border-white/10">
+          <div className="flex items-center gap-4 p-6 border-b md:border-b-0 md:border-r border-white/10">
             <Users className="text-[#F46F25]" size={32} />
             <div>
-              <h3 className="font-bold text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>EXPERT MENTORS</h3>
-              <p className="text-[#999999] text-xs">Industry professionals</p>
+              <h3 className="font-bold text-base md:text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>EXPERT MENTORS</h3>
+              <p className="text-[#999999] text-sm md:text-xs">Industry professionals</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-6 border-r border-white/10">
+          <div className="flex items-center gap-4 p-6 border-b md:border-b-0 md:border-r border-white/10">
             <Briefcase className="text-[#F46F25]" size={32} />
             <div>
-              <h3 className="font-bold text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>FREELANCING SUPPORT</h3>
-              <p className="text-[#999999] text-xs">Launch your career</p>
+              <h3 className="font-bold text-base md:text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>FREELANCING SUPPORT</h3>
+              <p className="text-[#999999] text-sm md:text-xs">Launch your career</p>
             </div>
           </div>
           <div className="flex items-center gap-4 p-6">
             <TrendingUp className="text-[#F46F25]" size={32} />
             <div>
-              <h3 className="font-bold text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>CAREER GROWTH</h3>
-              <p className="text-[#999999] text-xs">Continuous development</p>
+              <h3 className="font-bold text-base md:text-sm" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>CAREER GROWTH</h3>
+              <p className="text-[#999999] text-sm md:text-xs">Continuous development</p>
             </div>
           </div>
         </div>

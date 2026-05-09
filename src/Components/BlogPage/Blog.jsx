@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 /* FILTERS */
 const filters = [
@@ -91,7 +89,7 @@ function BlogCard({ post, index }) {
           {post.title}
         </h3>
 
-        <p className="text-[#999] text-xs leading-relaxed mb-4 line-clamp-3 flex-1">
+        <p className="text-[#999] text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
           {post.excerpt}
         </p>
 
@@ -121,9 +119,6 @@ function BlogCard({ post, index }) {
 function Blog() {
   const [activeFilter, setActiveFilter] = useState("all");
 
-  useEffect(() => {
-    AOS.init({ duration: 700, once: true });
-  }, []);
 
   const filteredPosts =
     activeFilter === "all"

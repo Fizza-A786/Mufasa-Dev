@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,10 +11,12 @@ import About from "./Pages/About";
 import Projects from "./Pages/Projects";
 import Services from "./Pages/Services";
 import Courses from "./Pages/Course";
-import Blog from "./Pages/Blog"; // ✅ added
+import Blog from "./Pages/Blog";
 import ContactUs from "./Pages/ContactUs";
 
 const App = () => {
+  const location = useLocation();
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -23,11 +25,14 @@ const App = () => {
     });
   }, []);
 
+  useEffect(() => {
+    AOS.refresh();
+  }, [location.pathname]);
+
   return (
     <div className="flex flex-col min-h-screen bg-[#0A0A0A]">
       <Navbar />
-
-      <main className="flex-grow bg-[#0A0A0A]">
+      <main className="grow bg-[#0A0A0A]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -38,7 +43,6 @@ const App = () => {
           <Route path="/contactus" element={<ContactUs/>} />
         </Routes>
       </main>
-
       <Footer />
     </div>
   );

@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 export default function Hero() {
-  useEffect(() => {
-    AOS.init({ duration: 800, easing: "ease-out-cubic", once: true });
-  }, []);
+  // AOS initialization moved to App.jsx for better performance
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden px-6 sm:px-10 lg:px-16 py-24 mt-10">
+    <section className="relative min-h-screen flex items-center overflow-hidden px-5 sm:px-10 lg:px-16 pt-40 pb-16 lg:pt-28 lg:pb-0">
 
       {/* Ambient glows */}
       <div className="absolute right-[-60px] w-[420px] h-[420px] bg-[#F46F25]/18 blur-[140px] rounded-full pointer-events-none" />
@@ -22,7 +20,7 @@ export default function Hero() {
         <div className="max-w-2xl mx-auto lg:mx-0 text-left">
 
           {/* Heading */}
-          <h1 className="font-black leading-[1.07] mb-5 tracking-tight text-[clamp(34px,4.5vw,60px)]">
+          <h1 className="font-black leading-[1.1] mb-5 tracking-tight text-[clamp(32px,6vw,64px)] text-center lg:text-left">
             <span data-aos="fade-up" data-aos-delay="100" className="block text-white">Scaleable</span>
             <span data-aos="fade-up" data-aos-delay="200" className="block">
               <span className="text-[#F46F25]">Software</span>
@@ -36,7 +34,7 @@ export default function Hero() {
           <p
             data-aos="fade-up"
             data-aos-delay="350"
-            className="text-white/62 text-sm sm:text-base leading-relaxed mb-7 max-w-lg"
+            className="text-white/70 text-base sm:text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
           >
             Take your business to the next level with our expert development services.
             We create custom software, stunning websites, and user-friendly apps that
@@ -47,12 +45,12 @@ export default function Hero() {
           <ul
             data-aos="fade-up"
             data-aos-delay="380"
-            className="flex flex-col gap-3 mb-9 items-start"
+            className="flex flex-col gap-4 mb-10 items-center lg:items-start"
           >
             {["Custom Software & Web Solutions", "Seamless App Development"].map((item) => (
-              <li key={item} className="flex items-center gap-3 text-white font-semibold text-sm">
-                <span className="w-[18px] h-[18px] rounded-full border-2 border-[#F46F25] flex items-center justify-center flex-shrink-0">
-                  <span className="w-[7px] h-[7px] rounded-full bg-[#F46F25]" />
+              <li key={item} className="flex items-center gap-3 text-white font-semibold text-sm sm:text-base">
+                <span className="w-[20px] h-[20px] rounded-full border-2 border-[#F46F25] flex items-center justify-center shrink-0">
+                  <span className="w-[8px] h-[8px] rounded-full bg-[#F46F25]" />
                 </span>
                 {item}
               </li>
@@ -63,25 +61,25 @@ export default function Hero() {
           <div
             data-aos="fade-up"
             data-aos-delay="420"
-            className="flex flex-wrap gap-5 items-center justify-start"
+            className="flex flex-col sm:flex-row gap-6 items-center justify-center lg:justify-start"
           >
             <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#F46F25] text-white rounded
-                         text-xs font-bold uppercase tracking-widest
+              to="/contactus"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#F46F25] text-white rounded-xl
+                         text-sm font-bold uppercase tracking-widest
                          shadow-[0_8px_28px_rgba(244,111,37,0.4)]
                          hover:scale-105 hover:shadow-[0_12px_38px_rgba(244,111,37,0.55)]
                          transition-all duration-300 group"
             >
               Contact Us Today!
               <ArrowUpRight
-                size={15}
+                size={18}
                 className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
               />
             </Link>
 
             <div className="flex items-center gap-3">
-              <div className="w-[42px] h-[42px] rounded-full bg-green-500 flex items-center justify-center shadow-[0_4px_16px_rgba(34,197,94,0.4)] flex-shrink-0">
+              <div className="w-[42px] h-[42px] rounded-full bg-green-500 flex items-center justify-center shadow-[0_4px_16px_rgba(34,197,94,0.4)] shrink-0">
                 <Phone size={17} className="text-white" />
               </div>
               <div>
@@ -100,12 +98,12 @@ export default function Hero() {
         <div
           data-aos="zoom-in"
           data-aos-delay="200"
-          className="hidden lg:flex justify-center items-center relative"
+          className="flex justify-center items-center relative mt-12 lg:mt-0"
         >
-          <div className="relative w-[450px] h-[450px]">
+          <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[450px] lg:h-[450px]">
 
             <img
-              src="./hero.png"
+              src="/hero.png"
               alt="tech visual"
               className="w-full h-full object-contain opacity-90"
               style={{
@@ -113,7 +111,7 @@ export default function Hero() {
               }}
             />
 
-            <div className="absolute inset-0 bg-[#F46F25]/20 blur-[80px] rounded-full -z-10" />
+            <div className="absolute inset-0 bg-[#F46F25]/20 blur-[60px] lg:blur-[80px] rounded-full -z-10" />
 
           </div>
         </div>

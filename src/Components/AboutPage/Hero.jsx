@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const heroImage =
   "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800";
@@ -9,13 +7,6 @@ const heroImage =
 export function Hero() {
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 100,
-    });
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -80,13 +71,13 @@ export function Hero() {
                 WE ARE <span className="text-[#FF6B00]">MUFASA DEVELOPERS</span>
               </h2>
 
-              <p className="text-[#999999] text-sm sm:text-base leading-relaxed">
+              <p className="text-[#999999] text-base sm:text-lg leading-relaxed">
                 Mufasa Developers is a leading tech education platform dedicated to empowering
                 aspiring developers and freelancers with the skills they need to succeed in
                 the digital economy.
               </p>
 
-              <p className="text-[#999999] text-sm sm:text-base leading-relaxed">
+              <p className="text-[#999999] text-base sm:text-lg leading-relaxed">
                 Founded by industry professionals who understand the gap between traditional
                 education and market demands, we provide practical, hands-on training that
                 prepares students for real-world challenges. Our comprehensive courses, expert

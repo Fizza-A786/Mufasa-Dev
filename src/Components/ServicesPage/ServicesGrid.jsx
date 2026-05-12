@@ -8,8 +8,7 @@ import {
   Package,
 } from "lucide-react";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 /* ================= DATA ================= */
 
@@ -61,13 +60,6 @@ const services = [
 /* ================= COMPONENT ================= */
 
 export function ServicesGrid() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-  }, []);
 
   return (
     <>
@@ -111,7 +103,7 @@ export function ServicesGrid() {
           <h1
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-5xl md:text-7xl font-bold"
+            className="text-[clamp(34px,6vw,72px)] font-bold leading-tight"
             style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
           >
             Our <span className="text-[#FF6B00]">Services</span>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Eye } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { initProjectsAnimations } from "../../Animations/Home";
 
 import charity from "../../assets/charity.jpeg";
 import carrent from "../../assets/carrent.jpg";
@@ -17,30 +17,7 @@ export function ProjectsPreview() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".projects-heading", {
-        y: 30,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-      });
-
-      gsap.from(".project-tile", {
-        y: 50,
-        opacity: 0,
-        stagger: 0.18,
-        duration: 0.9,
-        ease: "power3.out",
-      });
-
-      gsap.from(".projects-btn", {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        delay: 0.4,
-      });
-    }, sectionRef);
-
+    const ctx = initProjectsAnimations(sectionRef);
     return () => ctx.revert();
   }, []);
 
@@ -60,7 +37,7 @@ export function ProjectsPreview() {
         A curated collection of our most impactful digital projects.
         Designed with precision, built for performance and experience.
       </p>
-      <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-6">
+      <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
           <a
             key={project.id}
@@ -99,7 +76,7 @@ export function ProjectsPreview() {
         className="projects-btn mt-10 inline-flex items-center gap-2 text-sm font-medium tracking-wider text-white/80 hover:text-white transition-all"
       >
         View Full Portfolio
-        <span className="w-6 h-[1px] bg-[#F46F25]"></span>
+        <span className="w-6 h-px bg-[#F46F25]"></span>
       </Link>
 
     </section>

@@ -1,6 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const stats = [
   { id: "about-students-count", target: 500, suffix: "+", label: "Students Trained", sub: "Empowered learners" },
@@ -13,13 +11,6 @@ function Stats() {
   const [animated, setAnimated] = useState(false);
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 100,
-    });
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

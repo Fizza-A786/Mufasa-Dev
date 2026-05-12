@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { Target, Eye } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const cards = [
   {
@@ -17,13 +15,6 @@ const cards = [
 ];
 
 function MissionVision() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 100,
-    });
-  }, []);
 
   return (
     <section className="py-16 sm:py-24 ">
@@ -54,7 +45,7 @@ function MissionVision() {
               </h3>
 
               {/* Divider */}
-              <div className="w-10 h-[2px] bg-[#FF6B00] mb-4 group-hover:w-16 transition-all duration-300" />
+              <div className="w-10 h-0.5 bg-[#FF6B00] mb-4 group-hover:w-16 transition-all duration-300" />
 
               {/* Text */}
               <p className="text-[#999999] text-sm sm:text-base leading-relaxed">

@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const courses = [
   "React & Next.js",
@@ -11,13 +9,6 @@ const courses = [
 ];
 
 const CoursesSection = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-  }, []);
 
   return (
     <section className="bg-[#0A0A0A] text-white py-24 px-6">

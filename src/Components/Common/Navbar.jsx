@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
 
           {/* LOGO */}
-          <div className="relative w-auto flex-shrink-0 group overflow-hidden min-h-[56px]">
+          <div className="relative w-auto shrink-0 group overflow-hidden min-h-[56px]">
 
             {/* Hover LOGO */}
             <div
@@ -109,7 +109,7 @@ export default function Navbar() {
                 {link.label}
 
                 <span
-                  className={`absolute left-0 -bottom-1 h-[2px] bg-[#F46F25] transition-all duration-300 ${
+                  className={`absolute left-0 -bottom-1 h-0.5 bg-[#F46F25] transition-all duration-300 ${
                     isActive(link.path) ? "w-full" : "w-0"
                   }`}
                 />
@@ -152,29 +152,29 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-3 py-2 rounded-md text-sm font-semibold ${
+                className={`block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
                   isActive(link.path)
                     ? "text-[#F46F25] bg-[#F46F25]/10"
-                    : "text-white hover:text-[#F46F25]"
+                    : "text-white active:bg-white/5"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
 
-            <div className="pt-4 flex flex-col gap-3">
+            <div className="pt-6 flex flex-col gap-4">
               <a
                 href="https://www.upwork.com/freelancers/~0187b7cb16b8a2b93f"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-center border border-[#F46F25] text-[#F46F25] py-2 rounded-md text-sm font-semibold"
+                className="text-center border border-[#F46F25] text-[#F46F25] py-3.5 rounded-xl text-base font-bold uppercase tracking-wider"
               >
                 UpWork
               </a>
 
               <Link
                 to="/contactus"
-                className="text-center bg-[#F46F25] text-white py-2 rounded-md text-sm font-semibold"
+                className="text-center bg-[#F46F25] text-white py-3.5 rounded-xl text-base font-bold uppercase tracking-wider shadow-lg shadow-[#F46F25]/20"
               >
                 Contact Us
               </Link>
